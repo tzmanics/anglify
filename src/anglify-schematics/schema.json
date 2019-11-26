@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "AnglifySchematicsNgAdd",
+  "title": "ng add schematic",
+  "type": "object",
+  "description": "Creates a config file and gitignores it 🔒",
+  "properties": {
+    "api": {
+      "type": "string",
+      "description": "The api ID to use.",
+      "x-prompt": "What is the api ID?"
+    },
+    "token": {
+      "type": "string",
+      "description": "The token to use.",
+      "x-prompt": "What is the token?"
+    },
+    "project": {
+      "type": "string",
+      "description": "The project to use.",
+      "x-prompt": "What is the project?"
+    }
+  },
+  "required": ["api", "token", "project"]
+}

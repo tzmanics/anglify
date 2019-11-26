@@ -5,14 +5,18 @@ import * as path from "path";
 const collectionPath = path.join(__dirname, "../collection.json");
 
 describe("ng-add", () => {
-  it("works", () => {
+  it("creates a config file", () => {
     const runner = new SchematicTestRunner("schematics", collectionPath);
-    const tree = runner.runSchematic("ng-add", {}, Tree.empty());
+    const options = {
+      api: "api",
+      token: "token",
+      project: "project"
+    };
+    const tree = runner.runSchematic("ng-add", options, Tree.empty());
 
-    expect(tree.files).toEqual(["/netlifyConfig.json"]);
     const content = tree.readContent("/netlifyConfig.json");
-    expect(content).toMatch(/apiId/);
-    expect(content).toMatch(/accessToken/);
-    expect(content).toMatch(/projectName/);
+    expect(content).toContain('apiId": "api"');
+    expect(content).toContain('accessToken": "token"');
+    expect(content).toContain('projectName": "project"');
   });
 });
