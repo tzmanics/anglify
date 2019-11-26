@@ -10,5 +10,9 @@ describe("ng-add", () => {
     const tree = runner.runSchematic("ng-add", {}, Tree.empty());
 
     expect(tree.files).toEqual(["/netlifyConfig.json"]);
+    const content = tree.readContent("/netlifyConfig.json");
+    expect(content).toMatch(/apiId/);
+    expect(content).toMatch(/accessToken/);
+    expect(content).toMatch(/projectName/);
   });
 });
