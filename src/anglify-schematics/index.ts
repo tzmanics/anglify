@@ -12,6 +12,17 @@ export function anglifySchematics(_options: any): Rule {
     };
     tree.create("/netlifyConfig.json", JSON.stringify(config, null, 2));
 
+    const newGitignoreContent = "netlifyConfig.json";
+    if (tree.exists("/.gitignore")) {
+      let gitignoreBuffer = tree.read("/.gitignore");
+      if (gitignoreBuffer != null) {
+        let gitignoreContents = gitignoreBuffer.toString();
+        gitignoreContents = `${gitignoreContents}\r\n${newGitignoreContent}`;
+        _context.logger.warn(gitignoreContents);
+      }
+    } else {
+      tree.create("/.gitignore", newGitignoreContent);
+    }
     // 2) update gitignore file #thanksBill
 
     // 3) call Netlify API
