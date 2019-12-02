@@ -1,6 +1,6 @@
 {
   "name": "anglify",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Anglify: Netlify Schematics for your Angular antics!",
   "scripts": {
     "build": "tsc -p tsconfig.json",
