@@ -1,6 +1,12 @@
 {
   "$schema": "../node_modules/@angular-devkit/schematics/collection-schema.json",
   "schematics": {
+    "add-netlify": {
+      "aliases": ["net"],
+      "factory": "./add-netlify/index#addNetlify",
+      "description": "Connect project to Netlify account.",
+      "schema": "./anglify/schema.json"
+    },
     "ng-add": {
       "description": "An ✨ awesome Netlify addition to your 💯 NG project",
       "factory": "./anglify/index#anglify",
